@@ -1,30 +1,17 @@
+// THIS FILE IS THE ROOT COMPONENT- ALL SUBCOMPONENTS ARE NESTED WITHIN 
+
 <template>
-  <!-- <div id="app">
-      <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div>
-      <router-view/>
-    </div> -->
-<div class="body">
-  <div class="row, navbar">
-    <div class="col-4">Matches</div>
-    <div class="col-4">Table</div>
-    <div class="col-4">Chat</div>
-  </div>
-  <div class="appContainer">
-    <div class="appPlaceholder">
-      <p>VUE APP GOES HERE</p>
+  <div class="body">
+    <div class="row, navbar">
+
+      <router-link to="/">Matches</router-link> |
+      <router-link to="/table">Table</router-link> |
+      <router-link to="/chatLogin">Chat</router-link>
+      <router-view />
+
     </div>
+
   </div>
-  <div class="footer">
-    <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6"><img src="./assets/premierLeagueLogo.png" alt="Premier League Logo" class="logo"></div>
-    <div class="col-3"></div>
-    </div>
-  </div>
-</div>
 </template>
 
 <style>.logo {

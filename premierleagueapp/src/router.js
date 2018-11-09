@@ -1,25 +1,32 @@
+// THIS FILE CONTROLS NAVIGATION AROUND COMPONENTS AND SPECIFIES URLS
+
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import router from 'vue-router'
+import matches from './views/matches.vue'
+import table from './views/table.vue'
+import chatLogin from './views/chatLogin.vue'
 
-Vue.use(Router)
+Vue.use(router)
 
-export default new Router({
+export default new router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'Matches',
+      component: matches
+      
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/table',
+      name: 'Table',
+      component: table
+    },
+    {
+      path: '/chatlogin',
+      name: 'Chat Login',
+      component: chatLogin
     }
   ]
 })
