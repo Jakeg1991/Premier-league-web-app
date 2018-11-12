@@ -2,24 +2,33 @@
 
 <template>
   <div class="body">
-    <div class="row, navbar">
+    <div class="row navbar">
 
       <router-link to="/">Matches</router-link> |
       <router-link to="/table">Table</router-link> |
       <router-link to="/chatLogin">Chat</router-link>
-      <router-view />
+      
 
     </div>
-
+    <router-view />
   </div>
 </template>
 
-<style>.logo {
+<style>
+.appBox {
+  border-style: dotted;
+  border-width: 2px;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
   width: 100%
 }
 
 .body {
   background-color: blueviolet;
+  background-image: url('/assets/premierLeagueLogo.png');
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -30,18 +39,6 @@
   height: 7vh;
 }
 
-.appContainer {
- background-color: rgb(109, 54, 160);
-  height: 78vh;
-  padding: 10px
-}
-
-.appPlaceholder {
-  background-color: rgba(0, 255, 255, 0.219);
-  height: 100%;
-  width: 100%;
-
-}
 
 .footer {
   background-color: rgb(109, 54, 160);
@@ -49,10 +46,10 @@
 }
 
 @media (orientation:landscape) {
-  .footer {
-    display: none;
-  }
-
+.container {
+  height: 100%;
+  width: 100%
+}
   .appContainer {
     height: 90vh;
   }

@@ -2,9 +2,9 @@
 
 import Vue from 'vue'
 import router from 'vue-router'
-import matches from './views/matches.vue'
-import table from './views/table.vue'
-import chatLogin from './views/chatLogin.vue'
+import matches from './views/Matches.vue'
+import table from './views/Table.vue'
+import chatLogin from './views/ChatLogin.vue'
 
 Vue.use(router)
 
@@ -22,10 +22,19 @@ export default new router({
       path: '/table',
       name: 'Table',
       component: table
+
+        // path: '/allteams',
+        // name: 'allteams',
+        // // route level code-splitting
+        // // this generates a separate chunk (about.[hash].js) for this route
+        // // which is lazy-loaded when the route is visited.
+        // component: () => import('./views/AllTeams.vue')
+  
+  
     },
     {
       path: '/chatlogin',
-      name: 'Chat Login',
+      name: 'ChatLogin',
       component: chatLogin
     }
   ]

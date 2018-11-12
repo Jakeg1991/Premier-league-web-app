@@ -1,16 +1,15 @@
 <template>
-    <div></div>
+<div class="appBox">chatLogin.vue</div>
 </template>
 
 <script>
 export default {
-    name: "modal"
-    
+  name: 'ChatLoginBox'
 }
+
 </script>
 
 <style scoped>
-
 </style>
 
 
