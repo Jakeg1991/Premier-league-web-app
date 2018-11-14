@@ -19,20 +19,17 @@
   border-style: dotted;
   border-width: 2px;
   width: 100%;
-  height: 100%;
-}
+  height: 100%;}
 
 .logo {
-  width: 100%
-}
+  width: 100%}
 
 .body {
   background-color: blueviolet;
   background-image: url('/assets/premierLeagueLogo.png');
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
+  overflow: hidden;}
 
 .navbar {
   background-color: aliceblue;
