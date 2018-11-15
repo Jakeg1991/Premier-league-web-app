@@ -1,5 +1,5 @@
 <template>
-<div class="appBox">chatLogin.vue</div>
+<div></div>
 </template>
 
 <script>

@@ -1,10 +1,19 @@
 <template>
 <div class="WeekSelector">
     <v-flex xs6 sm3>
-        <v-select :items="items" label="Round" outline></v-select>
+        <v-select
+          :items="items"
+          label="Round"
+          solo
+        ></v-select>
     </v-flex>
     <div class="ButtonWrapper">
         <v-btn color="rgba(255, 0, 0, 1)">Latest Round</v-btn>
+    </div>
+    <div class="DateMessage">
+
+        <p>12.12.2018-12.12-2018</p>
+
     </div>
 </div>
 </template>
@@ -21,22 +30,20 @@ export default {
 
 <style scoped>
 
-.ButtonWrapper {
-/* margin-left: 2.5%;
-margin-top: 2%; */
-
-
-}
-
-
 .WeekSelector {
 display: flex;
-height: 15%;
+justify-content: space-around;
+align-items: flex-start;
+height: auto;
 width: 100%;
 border-style: dotted;
 border-width: 2px;
 flex-wrap: nowrap;
+}
 
+.DateMessage {
+position:absolute;
+top: 55px
 }
 </style>
 

@@ -23,7 +23,6 @@ export default {
 <style scoped>
 .container {
   position: fixed;
-  padding: 15px;
   width: 100%;
   height: 93%;
   left: 0px;

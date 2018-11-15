@@ -22,9 +22,8 @@ export default {
 <style scoped>
 .container {
   position: fixed;
-  padding: 15px;
   width: 100%;
-  height: 93%;
+  height: 100%;
   left: 0px;
   top: 50px;
   display: flex;
@@ -33,7 +32,7 @@ export default {
 .appWrapper {
   top: 10px;
   width: 100%;
-  height: 90%;
+  height: 100%;
   background-color: rgba(255, 0, 0, 0.212);
   display: flex;
   flex-wrap: wrap;

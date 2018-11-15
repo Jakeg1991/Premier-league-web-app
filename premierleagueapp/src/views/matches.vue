@@ -3,7 +3,6 @@
 <div class="appWrapper">
 <MatchesBox/>
 </div>
-<FooterBox/>
 </div>
 </template>
 
@@ -22,7 +21,7 @@ export default {
 <style scoped>
 .container {
   position: fixed;
-  padding: 15px;
+  padding: 0px;
   width: 100%;
   height: 93%;
   left: 0px;
