@@ -2,7 +2,7 @@
 <div class="appBox">
 
 <template>
-  <v-data-table
+  <!-- <v-data-table
     :headers="headers"
     :items="desserts"
     class="elevation-1"
@@ -15,7 +15,7 @@
       <td class="text-xs-right">{{ props.item.L }}</td>
       <td class="text-xs-right">{{ props.item.PTS }}</td>
     </template>
-  </v-data-table>
+  </v-data-table> -->
 </template>
 
 

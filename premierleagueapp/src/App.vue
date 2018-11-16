@@ -2,57 +2,42 @@
 
 <template>
   <div class="body">
-    <div class="row navbar">
-
-      <router-link to="/">Matches</router-link> |
-      <router-link to="/table">Table</router-link> |
-      <router-link to="/chatLogin">Chat</router-link>
-      
-
-    </div>
-    <router-view />
+        <router-view />
+        <div class="fixed">
+        <NavBar/>
+        </div>
   </div>
 </template>
 
+<script>
+
+import NavBar from '@/components/NavBar.vue'
+
+
+export default {
+  name: 'MainVue',
+  components: {
+    NavBar},
+}
+</script>
+
+
 <style>
-.appBox {
-  border-style: dotted;
-  border-width: 2px;
-  width: 100%;
-  height: 100%;}
-
-.logo {
-  width: 100%}
-
 .body {
-  background-color: blueviolet;
-  background-image: url('/assets/premierLeagueLogo.png');
   width: 100vw;
   height: 100vh;
-  overflow: hidden;}
-
-.navbar {
-  background-color: aliceblue;
-  height: 7vh;
+  display: flex;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+.fixed {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  
 
-.footer {
-  background-color: rgb(109, 54, 160);
-  height: 15vh;
 }
 
-@media (orientation:landscape) {
-.container {
-  height: 100%;
-  width: 100%
-}
-  .appContainer {
-    height: 90vh;
-  }
-
-  .navbar {
-    height: 10vh;
-  }
-}
+  
 </style>
