@@ -1,35 +1,15 @@
 <template>
 <div class="appBox">
-
-<template>
-  <!-- <v-data-table
-    :headers="headers"
-    :items="desserts"
-    class="elevation-1"
-  >
-    <template slot="items" slot-scope="props">
-      <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.MP }}</td>
-      <td class="text-xs-right">{{ props.item.W }}</td>
-      <td class="text-xs-right">{{ props.item.D }}</td>
-      <td class="text-xs-right">{{ props.item.L }}</td>
-      <td class="text-xs-right">{{ props.item.PTS }}</td>
-    </template>
-  </v-data-table> -->
-</template>
-
-
 </div>
-
 </template>
 
 <script>
-import WeekSelector from '@/components/WeekSelector.vue'
+import MatchdaySelector from '@/components/MatchdaySelector.vue'
 
 export default {
   name: 'TableBox',
   components: {
-    WeekSelector},
+    MatchdaySelector},
   
 data () {
       return {

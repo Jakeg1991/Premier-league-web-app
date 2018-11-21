@@ -3,18 +3,15 @@
 <div class="appWrapper">
 <TableBox/>
 </div>
-<FooterBox/>
 </div>
 </template>
 
 <script>
-import FooterBox from '@/components/FooterBox.vue'
 import TableBox from '@/components/TableBox.vue'
 
 export default {
   name: 'Table',
-  components: {
-    FooterBox, TableBox},
+  components: {TableBox},
 }
 
 </script>

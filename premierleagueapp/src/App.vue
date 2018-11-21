@@ -10,14 +10,12 @@
 </template>
 
 <script>
-
-import NavBar from '@/components/NavBar.vue'
-
-
+import NavBar from '@/components/NavBar.vue';
 export default {
-  name: 'MainVue',
+  name: 'app',
   components: {
-    NavBar},
+    NavBar
+  }
 }
 </script>
 
@@ -35,9 +33,13 @@ export default {
   position: fixed;
   bottom: 0px;
   width: 100vw;
-  
 
 }
 
+.AppBox {
+margin: 5px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
   
 </style>

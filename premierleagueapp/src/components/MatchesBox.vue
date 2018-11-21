@@ -1,86 +1,64 @@
 <template>
-<div class="appBox">
-<WeekSelector/>
-  <table class="table">
-    <div class="Spacer">
-    </div>
-    <tbody>
+  <div class="AppBox">
+    <MatchdaySelector :currentMatchday="this.currentMatchday"/>
+<table>
+  <tbody>
       <tr>
         <td class="team1">Arsenal</td>
         <td class="score">1-0</td>
         <td class="team2">Wolverhampton Wanderers</td>
       </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Bournemouth</td>
-      </tr>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
+
+
+  <div class="appWrapper">
+</div>
 
 </div>
 
 </template>
 
 <script>
-import WeekSelector from '@/components/WeekSelector.vue'
-
+import MatchdaySelector from '@/components/MatchdaySelector.vue'
 export default {
   name: 'MatchesBox',
   components: {
-    WeekSelector},
+    MatchdaySelector
+  },
+  props: [
+    'currentMatchday',
+    'matchList'
+    ],
+
+  computed: {
+    filteredMatches: function(){
+      return this.matchlist.matches.matchday.filter((match) => {
+        return match.title.includes(this.selectedMatchday);
+      })
+    console.log("test")}
+  },
+
+  data() {
+    return {
+      selectedMatchday: ["13"]
+      
+    }
+
+    ;
+  },
+  created(){
+    console.log("(matchesbox) the current matchday is " + this.currentMatchday)
+    console.log(this.matchList.matches)
+  },
+  
+
 }
+
+;
 </script>
-
-
-<style scoped>
-.Spacer{
-  width: 100vw;
-  height: 54px;
-}
-
-.table td {
+<style scoped>.table td {
   border: none;
   vertical-align: middle;
   text-align: center;
