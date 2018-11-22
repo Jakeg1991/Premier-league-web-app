@@ -3,6 +3,7 @@
     <div v-if="!standingsLoading">
       <table class="table">
         <thead>
+          <div></div>
           <th class="th-sm"> TEAM </th>
           <th class="th-sm"> MP </th>
           <th class="th-sm"> W </th>
