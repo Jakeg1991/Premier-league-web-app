@@ -27,6 +27,7 @@ export default {
   display: flex;
     max-width: 100%;
     overflow-x: hidden;
+background-color:  aliceblue
 }
 
 .fixed {
@@ -41,5 +42,10 @@ margin: 5px;
     max-width: 100%;
     overflow-x: hidden;
 }
-  
+
+/* // SPINNER */
+
+
+
+
 </style>

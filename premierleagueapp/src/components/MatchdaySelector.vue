@@ -1,13 +1,14 @@
 <template>
-    <div class="MatchdaySelector">
-        <v-container>
-            <v-layout>
+<div class="MatchdaySelector">
+    <v-container>
+        <v-layout>
+            <div class="selectMatchday">
                 <v-select :items="totalMatchdays" v-model='currentMatchdaySelect' v-on:change="changeMatchday()"></v-select>
-
-                <v-btn v-on:click='selectLatestMatchday();changeMatchday()' dark>Latest</v-btn>
-            </v-layout>
-        </v-container>
-    </div>
+            </div>
+            <v-btn v-on:click='selectLatestMatchday()' dark>Next Match</v-btn>
+        </v-layout>
+    </v-container>
+</div>
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
     data() {
         return {
             selectedDay: [],
-            currentMatchdaySelect: [],
+            currentMatchdaySelect: 1,
             totalMatchdays: [],
         }
     },
@@ -33,10 +34,12 @@ export default {
         selectLatestMatchday: function () {
             console.log(this.currentMatchday)
             this.currentMatchdaySelect = this.currentMatchday
+            this.$parent.filteredMatches(this.currentMatchdaySelect)
         },
-        changeMatchday: function () {
+        changeMatchday () {
             console.log("changing matchday...")
-            this.$emit('childToParent',this.selectedDay)
+            // this.$emit('updateMatchday',this.selectedDay)
+            this.$parent.filteredMatches(this.currentMatchdaySelect)
 
         }
     }
@@ -45,14 +48,20 @@ export default {
 </script>
 
 <style scoped>
-
 .MatchdaySelector {
+display: flex;
+align-items: baseline;
 top: -13px;
 position: fixed;
 height: 7px;
 width: 100vw;
 z-index: 1;
-background-color: rgba(0, 0, 0, 0.5)
+border-width: 1px;
+border-style: dotted;
+}
+
+selectMatchday {
+    width: 100vw
 }
 </style>
 

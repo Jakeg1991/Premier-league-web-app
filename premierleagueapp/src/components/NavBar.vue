@@ -5,19 +5,19 @@
             <router-link to="/">
                 <v-btn color="teal" flat value="Matches">
                     <span>Matches</span>
-                    <v-icon>history</v-icon>
+                    <v-icon>lens</v-icon>
                 </v-btn>
             </router-link>
             <router-link to="/table">
                 <v-btn color="teal" flat value="Table">
-                    <span>Table</span>
-                    <v-icon>favorite</v-icon>
+                    <span>Standings</span>
+                    <v-icon>adjust</v-icon>
                 </v-btn>
             </router-link>
             <router-link to="/chatLogin">
                 <v-btn color="teal" flat value="Chat">
                     <span>Chat</span>
-                    <v-icon>place</v-icon>
+                    <v-icon>chat_bubble</v-icon>
                 </v-btn>
             </router-link>
         </v-bottom-nav>

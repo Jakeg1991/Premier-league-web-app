@@ -1,21 +1,6 @@
 <template>
   <div class="AppBox">
     <MatchdaySelector :currentMatchday="this.currentMatchday"/>
-<table>
-  <tbody>
-      <tr>
-        <td class="team1">Arsenal</td>
-        <td class="score">1-0</td>
-        <td class="team2">Wolverhampton Wanderers</td>
-      </tr>
-  </tbody>
-</table>
-
-
-
-  <div class="appWrapper">
-</div>
-
 </div>
 
 </template>
@@ -25,33 +10,27 @@ import MatchdaySelector from '@/components/MatchdaySelector.vue'
 export default {
   name: 'MatchesBox',
   components: {
-    MatchdaySelector
+    MatchdaySelector,
   },
   props: [
     'currentMatchday',
     'matchList'
     ],
 
-  computed: {
-    filteredMatches: function(){
-      return this.matchlist.matches.matchday.filter((match) => {
-        return match.title.includes(this.selectedMatchday);
-      })
-    console.log("test")}
-  },
-
   data() {
     return {
       selectedMatchday: ["13"]
-      
     }
 
     ;
   },
-  created(){
-    console.log("(matchesbox) the current matchday is " + this.currentMatchday)
-    console.log(this.matchList.matches)
-  },
+  methods:{
+    filteredMatches(num){
+      console.log('in matches box changing Matches ' + num)
+      this.$parent.filteredMatches(num)
+    }
+  }
+
   
 
 }
