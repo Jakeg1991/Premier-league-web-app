@@ -3,7 +3,7 @@
   <div v-if="!loggedIn">
     <div class="pleaseLogin">
       <div class="welcomeMessage">
-        <p>Welcome to the chat application. Please Login with a Google account to continue.</p>
+        <p class="chatWelcomeText">Welcome to the chat application. Please Login with a Google account to continue.</p>
         <hr>
         <div class="buttonWrapper">
           <button v-on:click="login()" class="btn btn-info"> Login </button>
@@ -13,7 +13,7 @@
   </div>
   <div v-else>
     <div class="chatArea">
-      <div class="spacer2" />
+      <div class="spacerTop" />
       <div class="logoutButton">
         <button v-on:click="logout()" class="btn btn-warning"> Logout </button> </div>
       <div class="chatBox">
@@ -25,7 +25,7 @@
             <p class="chatDate">{{msg.date}}</p>
           </div>
         </div>
-        <div class="spacer" />
+        <div class="spacerBottom" />
       </div>
       <div class="messageArea">
         <input type="text" v-model="msg" class="textArea">
@@ -83,9 +83,15 @@ export default {
           alert("alert logout");
         });
     },
+
     writeNewPost() {
       console.log(this.user.displayName);
       console.log(this.msg);
+      if($.trim(this.msg) == "")
+      {console.log("Text is empty");
+      alert("Please write message in chat box, unable to send empty messages")}
+      else
+      {console.log("Text is not empty")
       const post = {
         name: this.user.displayName,
         body: this.msg,
@@ -104,7 +110,11 @@ export default {
         .update(updates);
       this.msg = null;
       this.getPosts();
-    },
+    }},
+
+
+
+
     getPosts() {
       firebase
         .database()
@@ -121,18 +131,23 @@ export default {
     }
   }
 };
-</script><style scoped>.logoutButton {
+</script><style scoped>
+.chatWelcomeText {
+  margin: 10px;
+}
+
+.logoutButton {
   position: fixed;
   top: 8px;
   right: 10px;
 }
 
-.spacer {
+.spacerBottom {
   height: 95px;
   width: 100vw;
 }
 
-.spacer2 {
+.spacerTop {
   height: 40px;
   width: 100vw;
 }
@@ -146,7 +161,7 @@ export default {
 .textArea {
   height: 37px;
   width: 210px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   border-style: solid;
   border-color: black;
   border-width: 1px
@@ -200,19 +215,21 @@ chatDate {
 
 
 .buttonWrapper {
-  width: 100%
+  width: 100%;
 }
 
 .welcomeMessage {
   display: flex;
+  border-radius: 20px 20px 20px 20px;
   justify-content: center;
   color: aliceblue;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.527);
   height: 150px;
   width: 280px;
   padding: 15px;
   flex-direction: column;
   z-index: -1
+  
 }
 
 .pleaseLogin {
@@ -228,7 +245,7 @@ chatDate {
 .chatBox {
   height: calc("100vh - 20px");
   width: 100vw;
-  background-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0);
   padding: 2px;
 }
 

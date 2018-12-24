@@ -1,9 +1,9 @@
 <template>
   <div class="appWrapper">
+    <div class="spacer"/>
     <div v-if="!standingsLoading">
       <table class="table">
         <thead>
-          <div></div>
           <th class="th-sm"> TEAM </th>
           <th class="th-sm"> MP </th>
           <th class="th-sm"> W </th>
@@ -24,17 +24,17 @@
       </table>
     </div>
     <div v-else>
-      <p class="spinner">Loading...</p>
+    <div class="spinContainer">
+      <img class="spin" src="../assets/Spinner-1s-200px.svg" alt="Loading..."> 
+      </div>
     </div>
   </div>
 </template>
 <script>
 
   export default {
-
-    name: 'Table',
-    components: {
-    },
+name: 'Table',
+  components: {},
 
   data() {
     return {
@@ -42,9 +42,7 @@
       standingsLoading: true,
     }
   },
-
-
-    methods: {
+  methods: {
     fetchStandings() {
       const myRequest = 'http://api.football-data.org/v2/competitions/2021/standings';
       fetch(myRequest, {
@@ -58,13 +56,13 @@
           console.log(standings.standings[0].table);
           this.standingsLoading = false;
         })
-        .catch(error => console.log(error))},
-
-
+        .catch(error => console.log(error))
+    },
   },
   created() {
-    this.fetchStandings();}
+    this.fetchStandings();
   }
+}
 </script>
 
 <style scoped>

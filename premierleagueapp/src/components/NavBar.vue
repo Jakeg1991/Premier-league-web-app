@@ -1,21 +1,20 @@
 <template>
-
-    <v-card fixed height="57px" width="100%" flat>
-        <v-bottom-nav :active.sync="bottomNav" :value="true" absolute color="transparent">
+    <v-card dark fixed height="60px" width="100%">
+        <v-bottom-nav light :active.sync="bottomNav" :value="true" absolute color="transparent" height="60">
             <router-link to="/">
-                <v-btn color="teal" flat value="Matches">
+                <v-btn color="white" flat value="Matches">
                     <span>Matches</span>
                     <v-icon>lens</v-icon>
                 </v-btn>
             </router-link>
             <router-link to="/table">
-                <v-btn color="teal" flat value="Table">
+                <v-btn light color="white" flat value="Table">
                     <span>Standings</span>
                     <v-icon>adjust</v-icon>
                 </v-btn>
             </router-link>
             <router-link to="/chatLogin">
-                <v-btn color="teal" flat value="Chat">
+                <v-btn color="white" flat value="Chat">
                     <span>Chat</span>
                     <v-icon>chat_bubble</v-icon>
                 </v-btn>

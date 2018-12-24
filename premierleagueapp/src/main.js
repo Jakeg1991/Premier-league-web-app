@@ -1,14 +1,15 @@
 // THIS FILE RENDERS APP AND MOUNTS IT TO THE DOM
-
+window.$ = window.jQuery = require('jquery');
 import Vue from 'vue'
+import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import firebase from "firebase/app"
+import Vuetify from 'vuetify'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'vuetify/dist/vuetify.min.css'
 
 // Initialize Firebase
 var config = {

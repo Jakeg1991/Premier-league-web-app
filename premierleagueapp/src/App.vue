@@ -1,12 +1,14 @@
 // THIS FILE IS THE ROOT COMPONENT- ALL SUBCOMPONENTS ARE NESTED WITHIN 
 
 <template>
+<v-app>
   <div class="body">
         <router-view />
         <div class="fixed">
         <NavBar/>
         </div>
   </div>
+  </v-app>
 </template>
 
 <script>
@@ -21,13 +23,35 @@ export default {
 
 
 <style>
+.spacer {
+  width: 100%;
+  height:65px;
+}
+
+.spinContainer {
+  position:relative;
+  width: 100vw;
+  top: 20%;
+}
+
+.spin {
+  display: block;
+  margin-left: 25vw;
+  margin-top: 25vw;
+  width: 50%;
+}
+
 .body {
   width: 100vw;
   height: 100vh;
   display: flex;
-    max-width: 100%;
-    overflow-x: hidden;
-background-color:  aliceblue
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(211, 211, 211, 0.699);
+  background-image: url("../src/assets/premierLeagueLogo.png");
+  background-position: center; 
+  background-size: 80%;
+
 }
 
 .fixed {
@@ -36,16 +60,5 @@ background-color:  aliceblue
   width: 100vw;
 
 }
-
-.AppBox {
-margin: 5px;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-/* // SPINNER */
-
-
-
 
 </style>
