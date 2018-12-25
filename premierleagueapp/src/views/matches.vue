@@ -1,12 +1,12 @@
 <template>
 <div class="appWrapper">
-  <div class="spacer"/>
+  <div class="spacerTop"/>
+      <MatchdaySelector :currentMatchdayImport="this.currentMatchday" :matchesLoading="this.MatchesLoading"/>
   <div v-if="!TeamsLoading && !MatchesLoading">
-    <MatchdaySelector :currentMatchday="this.currentMatchday"/>
     <div v-for="(match, index) in this.chosenMatches" :key="index">
-      <oneMatch :match="match" :teams="teams" />
+      <OneMatch :match="match" :teams="teams" />
     </div>
-    <div class="spacer" />
+    <div class="spacerBottom" />
   </div>
   <div v-else>
     <div class="spinContainer">
@@ -19,14 +19,14 @@
 <script>
 import MatchdaySelector from '@/components/MatchdaySelector.vue'
 import NavBar from '@/components/NavBar.vue'
-import oneMatch from '@/components/oneMatch.vue'
+import OneMatch from '@/components/OneMatch.vue'
 
 export default {
   name: 'Table',
   components: {
     MatchdaySelector,
     NavBar,
-    oneMatch
+    OneMatch
   },
   methods: {
 fetchTeams() {
@@ -41,7 +41,7 @@ fetchTeams() {
         this.currentMatchday = teams.season.currentMatchday;
         this.selectedMatchday = teams.season.currentMatchday;
         this.teams = teams.teams
-        console.log(teams.teams);
+        // console.log(teams.teams);
         this.TeamsLoading = false;
       })
       .catch(error => console.log(error))
@@ -56,15 +56,13 @@ fetchTeams() {
       .then(response => response.json())
       .then(matchList => {
         this.matchList = matchList;
-        console.log(this.matchList)
+        // console.log(this.matchList)
         this.filteredMatches(this.selectedMatchday)
         this.MatchesLoading = false;
       })
       .catch(error => console.log(error))
   },
   filteredMatches(num) {
-    // console.log("test" + num)
-
     this.chosenMatches = this.matchList.matches.filter((match) => {
       return num == match.matchday;
     })
@@ -94,8 +92,6 @@ created() {
 </script>
 
 <style scoped>
-
-
 .appWrapper {
   top: 10px;
   width: 100vw;

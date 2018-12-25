@@ -6,7 +6,7 @@
             <div class="scoreNum">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</div>
             <div class="scoreDate">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
                 )+"-"+match.utcDate.substring(0, 4)}}</div>
-            <div class="scoreDate">{{match.utcDate.substring(11, 16)+" UTC"}}</div>
+            <div class="scoreDate">{{match.utcDate.substring(11, 16)+" GMT"}}</div>
         </div>
         <div class="awayTeam" :style="awayLogoUpdate"></div>
     </div>
@@ -14,8 +14,6 @@
 
 <script>
 export default {
-
-
     props: ['match',
         'teams'
     ],
@@ -87,17 +85,21 @@ export default {
 </script>
 
 <style>
-
-.teamName{
- font-weight: bold;
- background-color: rgba(0, 0, 0, 0.363)
+.homeLogo{
+    position: relative;
+    bottom: 3px;
+    left: 90%;
+    height: 75px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.418);
+    background-size: auto 95%;
 }
 
 .matchInfo {
     padding: 5px;
     width: 100vw;
     margin: 0px;
-    height: 95px;
+    height: 85px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -105,33 +107,31 @@ export default {
 }
 
 .homeTeam {
-    color: white;
     padding: 10px;
     width: 37%;
     margin: 0px;
-    height: 90px;
+    height: 80px;
     background-color:rgba(54, 54, 54, 0.5);
-    background-position: center;
+    background-position:center;
     background-size: auto 95%;
     border-radius: 20px 0px 0px 20px;
-    border-left: 3px solid black;
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .awayTeam {
-    color: white;
     padding: 10px;
     width: 37%;
     margin: 0px;
-    height: 90px;
+    height: 80px;
     background-color:rgba(54, 54, 54, 0.5);
     background-position: center;
     background-size: auto 95%;
     border-radius: 0px 20px 20px 0px;
-    border-right: 3px solid black;
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     
 }
 
@@ -139,29 +139,31 @@ export default {
     color: white;
     padding: 20px;
     width: 29%;
-    height: 90px;
+    height: 80px;
     background-color:rgba(54, 54, 54, 0.5);
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .scoreNum {
-    color: white;
-    font-size: 2em;
+    position: relative;
+    bottom:20px;
+    color: rgb(255, 198, 55);
+    font-size: 1.7em;
 }
 .scoreDate {
+    position: relative;
+    bottom:20px;
     background-color: rgba(0, 0, 0, 0.397);
     color: white;
     font-size: 0.8em
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 350px) {
 .scoreNum {
-color: rgb(255, 198, 55);
     font-size: 1.5em
 }
 .scoreDate {
-
     font-size: 0.6em
 }}
 

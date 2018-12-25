@@ -1,6 +1,7 @@
 <template>
   <div class="appWrapper">
     <div class="spacer"/>
+    <StandingsFilter/>
     <div v-if="!standingsLoading">
       <table class="table">
         <thead>
@@ -31,10 +32,10 @@
   </div>
 </template>
 <script>
-
+import StandingsFilter from '@/components/StandingsFilter.vue'
   export default {
 name: 'Table',
-  components: {},
+  components: {StandingsFilter},
 
   data() {
     return {

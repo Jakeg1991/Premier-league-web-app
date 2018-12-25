@@ -23,9 +23,13 @@ export default {
 
 
 <style>
-.spacer {
+.spacerBottom {
   width: 100%;
   height:65px;
+}
+.spacerTop {
+  width: 100%;
+  height:52px;
 }
 
 .spinContainer {
@@ -60,5 +64,17 @@ export default {
   width: 100vw;
 
 }
-
+.upper {
+display: flex;
+top: -13px;
+left: 0px;
+position: fixed;
+width:100vw; 
+position:fixed;
+display: flex;
+height: 7px;
+z-index: 1;
+border-width: 1px;
+border-style: dotted;
+}
 </style>

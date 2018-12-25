@@ -1,5 +1,6 @@
 <template>
 <div class="appWrapper">
+  <StandingsFilter/>
   <div v-if="!loggedIn">
     <div class="pleaseLogin">
       <div class="welcomeMessage">
@@ -39,9 +40,10 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import StandingsFilter from "@/components/StandingsFilter.vue";
 export default {
   name: "home",
-  components: {},
+  components: {StandingsFilter},
   data() {
     return {
       msg: "",
@@ -112,9 +114,6 @@ export default {
       this.getPosts();
     }},
 
-
-
-
     getPosts() {
       firebase
         .database()
@@ -123,15 +122,13 @@ export default {
           this.messages = data.val();
         });
     },
-    scrollDown() {
-      document.getElementById('scroll').scrollTop = document.getElementById('scroll').scrollHeight
-    },
     userMessage(name) {
       return this.user.displayName !== name
     }
   }
 };
 </script><style scoped>
+
 .chatWelcomeText {
   margin: 10px;
 }
@@ -148,7 +145,7 @@ export default {
 }
 
 .spacerTop {
-  height: 40px;
+  height: 80px;
   width: 100vw;
 }
 
@@ -160,8 +157,8 @@ export default {
 
 .textArea {
   height: 37px;
-  width: 210px;
-  background-color: rgba(255, 255, 255, 0);
+  width: 280px;
+  background-color: rgb(255, 255, 255);
   border-style: solid;
   border-color: black;
   border-width: 1px
@@ -216,6 +213,7 @@ chatDate {
 
 .buttonWrapper {
   width: 100%;
+  left: 500px;
 }
 
 .welcomeMessage {
