@@ -1,7 +1,47 @@
 <template>
     <div class="matchInfo">
         <!-- <button v-on:click="this.getLogos(this.HomeTeamID, this.AwayTeamID)">Add 1</button> -->
-        <div class="homeTeam" :style="homeLogoUpdate"></div>
+        <div class="homeTeam" :style="homeLogoUpdate" >
+
+
+
+<v-layout row justify-center>
+    <div class="modalClicker" @click="dialog = true">   
+    </div>
+
+    <v-dialog
+    dark
+      v-model="dialog"
+      max-width="400"
+    >
+      <v-card>
+        <v-card-title class="headline">{{this.HomeTeamName}}</v-card-title>
+
+
+        <v-card-text>
+          Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+        </v-card-text>
+
+<div class="homeTeamModal" :style="homeLogoUpdate" />
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            flat="flat"
+            @click="dialog = false"
+          >
+            Exit
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-layout>
+
+
+
+            
+        </div>
         <div class="score">
             <div class="scoreNum">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</div>
             <div class="scoreDate">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
@@ -23,8 +63,9 @@ export default {
             AwayTeamID: [0],
             HomeTeamLogo: "undefined",
             AwayTeamLogo: "undefined",
-            HomeTeamAcronym: "undefined",
-            AwayTeamAcronym: "undefined",
+            HomeTeamName: "undefined",
+            AwayTeamName: "undefined",
+            dialog: false
         }
 
     },
@@ -62,10 +103,10 @@ export default {
         getTLA(HomeID, AwayID) {
             for (var i = 0; i <= 19; i++) {
                 if (this.teams[i].id == this.HomeTeamID) {
-                    this.HomeTeamAcronym = this.teams[i].shortName
+                    this.HomeTeamName = this.teams[i].name
                 }
                 if (this.teams[i].id == this.AwayTeamID) {
-                    this.AwayTeamAcronym = this.teams[i].shortName
+                    this.AwayTeamName = this.teams[i].name
                 }
             }
         },
@@ -85,6 +126,14 @@ export default {
 </script>
 
 <style>
+.modalClicker{
+    position: relative;
+bottom:10px;
+height: 80px;
+width: 90px;
+background-color: rgba(0, 0, 0, 0)
+}
+
 .homeLogo{
     position: relative;
     bottom: 3px;
@@ -118,6 +167,13 @@ export default {
     border-left: 2px solid black;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+}
+
+.homeTeamModal {
+    margin: 0px;
+    height: 150px;
+    background-position:center;
+    background-size: auto 95%;
 }
 
 .awayTeam {

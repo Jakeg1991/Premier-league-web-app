@@ -1,5 +1,6 @@
 <template>
     <v-card dark fixed height="60px" width="100%">
+        <v-layout row justify-center>
         <v-bottom-nav light :active.sync="bottomNav" :value="true" absolute color="transparent" height="60">
             <router-link to="/">
                 <v-btn color="white" flat value="Matches">
@@ -20,6 +21,7 @@
                 </v-btn>
             </router-link>
         </v-bottom-nav>
+        </v-layout>
     </v-card>
 </template>
 

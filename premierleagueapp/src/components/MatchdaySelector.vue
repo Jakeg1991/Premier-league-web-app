@@ -2,44 +2,32 @@
 <v-card dark class="upper, MatchdaySelector" height="65px">
     <div v-if=matchesLoading></div>
     <div v-else>
-    <v-layout>
-        <div class="matchSelect">
-            <p class="matchSelectText">Matchweek</p>
-            <v-select :items="totalMatchdays" solo dense background-color="rgba(85,85,85,0.3)"
-                v-model='currentMatchdaySelect' v-on:change="changeMatchday()"></v-select>
-        </div>
-        <!-- <v-btn fab small v-on:click='previousMatchday(),changeMatchday()' dark>
-                    <v-icon dark right>keyboard_arrow_left</v-icon>
-                </v-btn>
-                <v-btn fab small v-on:click='nextMatchday(),changeMatchday()' dark>
-                    <v-icon dark right>keyboard_arrow_right</v-icon>
-                </v-btn>
-                <v-btn v-on:click='selectLatestMatchday()' dark>Current</v-btn> -->
-            <!-- <v-flex xs12 sm6 class="py-2"> -->
-                <!-- <v-btn v-on:click='testFunc()'>TEST</v-btn> -->
-
-        <div class="buttonContainer">
-    <v-btn small color="success" v-on:click='selectCurrentMatchday()'>Current</v-btn>
-    <v-btn-toggle multiple>
-        <v-btn v-on:click='selectPreviousMatchday(),changeParentMatchday()'>
-            <v-icon>keyboard_arrow_left</v-icon>
-        </v-btn>
-        <v-btn v-on:click='selectNextMatchday(),changeParentMatchday()'>
-            <v-icon>keyboard_arrow_right</v-icon>
-        </v-btn>
-    </v-btn-toggle>
-</div>
-
-            <!-- </v-flex> -->
-    </v-layout>
+        <v-layout>
+            <div class="matchSelect">
+                <p class="matchSelectText">Matchweek</p>
+                <v-select :items="totalMatchdays" solo dense background-color="rgba(85,85,85,0.3)" v-model='currentMatchdaySelect'
+                    v-on:change="changeMatchdayDropdown()"></v-select>
+            </div>
+            <div class="buttonContainer">
+                <v-btn small color="success" v-on:click='selectCurrentMatchday()'>Current</v-btn>
+                <v-btn-toggle multiple>
+                    <v-btn v-on:click='selectPreviousMatchday()'>
+                        <v-icon>keyboard_arrow_left</v-icon>
+                    </v-btn>
+                    <v-btn v-on:click='selectNextMatchday()'>
+                        <v-icon>keyboard_arrow_right</v-icon>
+                    </v-btn>
+                </v-btn-toggle>
+            </div>
+        </v-layout>
     </div>
 </v-card>
-
 </template>
+
 <script>
 export default {
     name: 'MatchdaySelector',
-    props: ['currentMatchdayImport','matchesLoading'],
+    props: ['matchesLoading'],
     data() {
         return {
             currentMatchday: [],
@@ -50,29 +38,15 @@ export default {
     },
     created() {
         this.totalMatchdays = this.populateMatchdays(1,38)
-        console.log("--CREATED--")
-        this.testFunc()
     },
     mounted() {
-        this.currentMatchday = 19
+        this.currentMatchday = 
         this.currentMatchdaySelect = this.currentMatchday
-        console.log("--MOUNTED--")
-        this.testFunc()
     },
         
     methods: {
         testFunc(){
-            console.log("currentMatchdayVV")
-            console.log(this.currentMatchday)
-            console.log("selectedDayVV")
-            console.log(this.selectedDay)
-            console.log("currentMatchdaySelectVV")
-            console.log(this.currentMatchdaySelect)
             console.log("totalMatchdaysVV")
-            console.log(this.totalMatchdays)
-            console.log("currentMatchdayImportVV")
-            console.log(this.currentMatchdayImport)
-            console.log("-----------------------------------")
         },
 
         populateMatchdays(firstMatchday,lastMatchday) {
@@ -84,7 +58,10 @@ export default {
             }
             return arr
         },
-
+        defineCurrentMatchday (num) {
+            this.currentMatchday = num
+            this.currentMatchdaySelect = num
+        },
         selectCurrentMatchday () {
             this.currentMatchdaySelect = this.currentMatchday
             this.$parent.filteredMatches(this.currentMatchdaySelect)
@@ -101,7 +78,7 @@ export default {
             this.currentMatchdaySelect++
             this.$parent.filteredMatches(this.currentMatchdaySelect)}
         },
-        changeParentMatchday () {
+        changeMatchdayDropdown () {
             this.$parent.filteredMatches(this.currentMatchdaySelect)
 
         }

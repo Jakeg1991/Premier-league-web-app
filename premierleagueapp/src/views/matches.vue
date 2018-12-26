@@ -1,10 +1,10 @@
 <template>
 <div class="appWrapper">
   <div class="spacerTop"/>
-      <MatchdaySelector :currentMatchdayImport="this.currentMatchday" :matchesLoading="this.MatchesLoading"/>
+      <MatchdaySelector ref="MatchdaySelector" :matchesLoading="this.MatchesLoading"/>
   <div v-if="!TeamsLoading && !MatchesLoading">
     <div v-for="(match, index) in this.chosenMatches" :key="index">
-      <OneMatch :match="match" :teams="teams" />
+      <OneMatch :match="match" :teams="teams"/>
     </div>
     <div class="spacerBottom" />
   </div>
@@ -41,8 +41,9 @@ fetchTeams() {
         this.currentMatchday = teams.season.currentMatchday;
         this.selectedMatchday = teams.season.currentMatchday;
         this.teams = teams.teams
-        // console.log(teams.teams);
         this.TeamsLoading = false;
+                console.log(this.teams)
+        this.updateMatchdaySelector(teams.season.currentMatchday)
       })
       .catch(error => console.log(error))
   },
@@ -66,6 +67,9 @@ fetchTeams() {
     this.chosenMatches = this.matchList.matches.filter((match) => {
       return num == match.matchday;
     })
+  },
+    updateMatchdaySelector(day){
+    this.$refs.MatchdaySelector.defineCurrentMatchday(day)
   }
 },
 

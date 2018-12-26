@@ -1,5 +1,5 @@
 <template>
-    <v-card dark class="upper, MatchdaySelector" height="79px">
+    <v-card dark class="upper, MatchdaySelector" height="65px">
     </v-card>
 </template>
 <script>
