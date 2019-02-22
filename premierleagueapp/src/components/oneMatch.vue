@@ -1,57 +1,65 @@
 <template>
-    <div class="matchInfo">
-        <!-- <button v-on:click="this.getLogos(this.HomeTeamID, this.AwayTeamID)">Add 1</button> -->
-        <div class="homeTeam" :style="homeLogoUpdate" >
-
-
-
-<v-layout row justify-center>
-    <div class="modalClicker" @click="dialog = true">   
+<div class="matchInfo">
+    <div class="homeTeam" :style="homeLogoUpdate">
+        <v-layout row justify-center>
+            <div class="modalClicker" @click="Modal = true">
+            </div>
+            <v-dialog dark v-model="Modal" max-width="400">
+                <v-card>
+                    <v-card-title class="display-1">{{this.HomeTeamName}}</v-card-title>
+                    <v-card-title class="title">
+                        Matchday {{match.matchday}} Results: 
+                    </v-card-title>
+                    <v-card-text>Goals at fulltime: {{match.score.fullTime.homeTeam}}<br>
+                    Goals at halftime: {{match.score.halfTime.homeTeam}}<br>
+                    Penalties: {{match.score.penalties.homeTeam}}</v-card-text>
+                    <div class="homeTeamModal" :style="homeLogoUpdate" />
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="green darken-1" flat="flat" @click="Modal = false">
+                            Exit
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+        </v-layout>
     </div>
-
-    <v-dialog
-    dark
-      v-model="dialog"
-      max-width="400"
-    >
-      <v-card>
-        <v-card-title class="headline">{{this.HomeTeamName}}</v-card-title>
-
-
-        <v-card-text>
-          Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
-        </v-card-text>
-
-<div class="homeTeamModal" :style="homeLogoUpdate" />
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="green darken-1"
-            flat="flat"
-            @click="dialog = false"
-          >
-            Exit
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-layout>
-
-
-
-            
-        </div>
-        <div class="score">
-            <div class="scoreNum">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</div>
-            <div class="scoreDate">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
-                )+"-"+match.utcDate.substring(0, 4)}}</div>
-            <div class="scoreDate">{{match.utcDate.substring(11, 16)+" GMT"}}</div>
-        </div>
-        <div class="awayTeam" :style="awayLogoUpdate"></div>
+    <div class="score">
+        <div class="scoreNum">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</div>
+        <div class="scoreDate">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
+            )+"-"+match.utcDate.substring(0, 4)}}</div>
+        <div class="scoreDate">{{match.utcDate.substring(11, 16)+" GMT"}}</div>
     </div>
+    <div class="awayTeam" :style="awayLogoUpdate">
+
+    <v-layout row justify-center>
+            <div class="modalClicker" @click="ModalAway = true">
+            </div>
+            <v-dialog dark v-model="ModalAway" max-width="400">
+                <v-card>
+                    <v-card-title class="display-1">{{this.AwayTeamName}}</v-card-title>
+                    <v-card-title class="title">
+                        Matchday {{match.matchday}} Results: 
+                    </v-card-title>
+                    <v-card-text>Goals at fulltime: {{match.score.fullTime.awayTeam}}<br>
+                    Goals at halftime: {{match.score.halfTime.awayTeam}}<br>
+                    Penalties: {{match.score.penalties.awayTeam}}</v-card-text>
+                    <div class="teamModal" :style="awayLogoUpdate" />
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="green darken-1" flat="flat" @click="ModalAway = false">
+                            Exit
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+        </v-layout>
+
+
+
+    </div>
+</div>
 </template>
-
 <script>
 export default {
     props: ['match',
@@ -65,7 +73,8 @@ export default {
             AwayTeamLogo: "undefined",
             HomeTeamName: "undefined",
             AwayTeamName: "undefined",
-            dialog: false
+            Modal: false,
+            ModalAway: false
         }
 
     },
@@ -121,6 +130,7 @@ export default {
         this.getTeamID();
         this.getLogos(this.HomeTeamID, this.AwayTeamID);
         this.getTLA(this.HomeTeamID, this.AwayTeamID)
+        console.log(this.match)
     }
 }
 </script>
@@ -131,7 +141,7 @@ export default {
 bottom:10px;
 height: 80px;
 width: 90px;
-background-color: rgba(0, 0, 0, 0)
+background-color: rgba(0, 0, 0, 0.513)
 }
 
 .homeLogo{

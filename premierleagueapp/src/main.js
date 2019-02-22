@@ -10,6 +10,7 @@ import firebase from "firebase/app"
 import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css'
+import store from './store'
 
 // Initialize Firebase
 var config = {
@@ -21,7 +22,7 @@ var config = {
   messagingSenderId: "46065127875"
 };
 firebase.initializeApp(config);
- 
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

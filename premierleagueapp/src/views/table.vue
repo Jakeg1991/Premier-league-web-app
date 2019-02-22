@@ -56,6 +56,7 @@ name: 'Table',
           this.standings = standings.standings[0].table;
           console.log(standings.standings[0].table);
           this.standingsLoading = false;
+          console.log(this.standings)
         })
         .catch(error => console.log(error))
     },

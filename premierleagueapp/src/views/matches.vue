@@ -42,7 +42,7 @@ fetchTeams() {
         this.selectedMatchday = teams.season.currentMatchday;
         this.teams = teams.teams
         this.TeamsLoading = false;
-                console.log(this.teams)
+        console.log(this.teams)
         this.updateMatchdaySelector(teams.season.currentMatchday)
       })
       .catch(error => console.log(error))
@@ -57,7 +57,6 @@ fetchTeams() {
       .then(response => response.json())
       .then(matchList => {
         this.matchList = matchList;
-        // console.log(this.matchList)
         this.filteredMatches(this.selectedMatchday)
         this.MatchesLoading = false;
       })

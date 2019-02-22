@@ -71,7 +71,7 @@ export default {
             else {
             this.currentMatchdaySelect--
             this.$parent.filteredMatches(this.currentMatchdaySelect)}},
-            // console.log(this.currentMatchdaySelect)},
+
         selectNextMatchday () {
             if (this.currentMatchdaySelect>=38){}
             else {

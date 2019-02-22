@@ -7,12 +7,13 @@
         <p class="chatWelcomeText">Welcome to the chat application. Please Login with a Google account to continue.</p>
         <hr>
         <div class="buttonWrapper">
-          <button v-on:click="login()" class="btn btn-info"> Login </button>
+          <button v-on:click="login()" class="btn btn-info login"> Login </button>
         </div>
       </div>
     </div>
   </div>
   <div v-else>
+    <div></div>
     <div class="chatArea">
       <div class="spacerTop" />
       <div class="logoutButton">
@@ -128,9 +129,16 @@ export default {
   }
 };
 </script><style scoped>
+.login {
+  position: relative;
+  left: 95px;
+  bottom: 20px;
+}
 
 .chatWelcomeText {
+  padding: 5px;
   margin: 10px;
+  background-color: rgba(0, 0, 0, 0.397);
 }
 
 .logoutButton {
@@ -221,12 +229,17 @@ chatDate {
   border-radius: 20px 20px 20px 20px;
   justify-content: center;
   color: aliceblue;
-  background-color: rgba(0, 0, 0, 0.527);
+  background-color:rgba(54, 54, 54, 0.5);
   height: 150px;
   width: 280px;
   padding: 15px;
   flex-direction: column;
-  z-index: -1
+  z-index: -1;
+  border-radius: 20px 20px 20px 20px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   
 }
 
