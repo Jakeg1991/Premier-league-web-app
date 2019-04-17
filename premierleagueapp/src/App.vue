@@ -4,45 +4,31 @@
 <v-app>
   <div class="body">
         <router-view />
-        <div class="fixed">
-        <NavBar/>
-        </div>
+        <navBar/>
   </div>
   </v-app>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
+import navBar from '@/components/navBar.vue';
 export default {
   name: 'app',
   components: {
-    NavBar
+    navBar
   }
 }
 </script>
 
 
 <style>
+
 .spacerBottom {
   width: 100%;
-  height:65px;
+  height:50px;
 }
 .spacerTop {
   width: 100%;
-  height:52px;
-}
-
-.spinContainer {
-  position:relative;
-  width: 100vw;
-  top: 20%;
-}
-
-.spin {
-  display: block;
-  margin-left: 25vw;
-  margin-top: 25vw;
-  width: 50%;
+  height:47px;
 }
 
 .body {
@@ -52,9 +38,10 @@ export default {
   max-width: 100%;
   overflow-x: hidden;
   background-color: rgba(211, 211, 211, 0.699);
-  background-image: url("../src/assets/premierLeagueLogo.png");
-  background-position: center; 
-  background-size: 80%;
+  background-image: url("../src/assets/premierLeagueLogo.png"),url("../src/assets/background.jpg");
+  background-position:center; 
+  background-repeat:no-repeat;
+  background-size: 80%, cover;
 
 }
 

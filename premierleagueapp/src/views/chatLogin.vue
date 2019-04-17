@@ -1,6 +1,5 @@
 <template>
 <div class="appWrapper">
-  <StandingsFilter/>
   <div v-if="!loggedIn">
     <div class="pleaseLogin">
       <div class="welcomeMessage">
@@ -41,10 +40,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import StandingsFilter from "@/components/StandingsFilter.vue";
 export default {
   name: "home",
-  components: {StandingsFilter},
   data() {
     return {
       msg: "",

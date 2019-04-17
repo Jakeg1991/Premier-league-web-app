@@ -1,7 +1,5 @@
 <template>
   <div class="appWrapper">
-    <div class="spacer"/>
-    <StandingsFilter/>
     <div v-if="!standingsLoading">
       <table class="table">
         <thead>
@@ -24,18 +22,18 @@
         </tbody>
       </table>
     </div>
-    <div v-else>
-    <div class="spinContainer">
-      <img class="spin" src="../assets/Spinner-1s-200px.svg" alt="Loading..."> 
-      </div>
-    </div>
+  <div v-else>
+
+<loadingSpinner/>
+
+  </div>
   </div>
 </template>
 <script>
-import StandingsFilter from '@/components/StandingsFilter.vue'
+import loadingSpinner from '@/components/loadingSpinner.vue'
   export default {
 name: 'Table',
-  components: {StandingsFilter},
+  components: {loadingSpinner},
 
   data() {
     return {

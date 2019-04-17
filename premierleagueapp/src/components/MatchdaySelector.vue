@@ -1,85 +1,102 @@
 <template>
-<v-card dark class="upper, MatchdaySelector" height="65px">
-    <div v-if=matchesLoading></div>
-    <div v-else>
-        <v-layout>
-            <div class="matchSelect">
-                <p class="matchSelectText">Matchweek</p>
-                <v-select :items="totalMatchdays" solo dense background-color="rgba(85,85,85,0.3)" v-model='currentMatchdaySelect'
-                    v-on:change="changeMatchdayDropdown()"></v-select>
-            </div>
-            <div class="buttonContainer">
-                <v-btn small color="success" v-on:click='selectCurrentMatchday()'>Current</v-btn>
-                <v-btn-toggle multiple>
-                    <v-btn v-on:click='selectPreviousMatchday()'>
+<div>
+<div class="matchdayInfoContainer">
+    <div class="matchdayInfo">
+                        <v-btn color="white" small round icon v-on:click='selectPreviousmatchday()'>
                         <v-icon>keyboard_arrow_left</v-icon>
-                    </v-btn>
-                    <v-btn v-on:click='selectNextMatchday()'>
+                 </v-btn>
+        
+<h4 class="matchWeekTitle">Matchweek {{this.currentmatchdaySelect}}</h4>
+
+                    <v-btn color="white" small round icon v-on:click='selectNextmatchday()'>
                         <v-icon>keyboard_arrow_right</v-icon>
                     </v-btn>
-                </v-btn-toggle>
+</div>
+</div>
+
+
+            <div class="matchdayInfoContainerLower">
+                <div class="matchdayInfo">
+                <v-btn small round v-on:click='selectCurrentmatchday()'>Current</v-btn>
+                <v-btn small round v-on:click='selectCurrentmatchday()'>Select</v-btn>
+                </div>
+</div>
+
+<!-- <div class="matchdaySelector">
+
+
+
+            <div class="matchSelect">
+                <v-select :items="totalmatchdays" solo dense background-color="rgba(85,85,85,0.3)" v-model='currentmatchdaySelect'
+                    v-on:change="changematchdayDropdown()"></v-select>
             </div>
-        </v-layout>
-    </div>
-</v-card>
+
+            <div class="matchdaySelectorInner">
+                <v-btn small round v-on:click='selectCurrentmatchday()'>Current</v-btn>
+                <v-btn small round v-on:click='selectCurrentmatchday()'>Select</v-btn>
+</div>
+
+
+</div> -->
+</div>
 </template>
 
 <script>
 export default {
-    name: 'MatchdaySelector',
+    name: 'matchdaySelector',
     props: ['matchesLoading'],
     data() {
         return {
-            currentMatchday: [],
+            currentmatchday: 31,
             selectedDay: [],
-            currentMatchdaySelect: [1],
-            totalMatchdays: [],
+            currentmatchdaySelect: [1],
+            totalmatchdays: [],
         }
     },
     created() {
-        this.totalMatchdays = this.populateMatchdays(1,38)
+        this.totalmatchdays = this.populatematchdays(1,38)
     },
     mounted() {
-        this.currentMatchday = 
-        this.currentMatchdaySelect = this.currentMatchday
+        this.currentmatchdaySelect = this.currentmatchday
     },
         
     methods: {
         testFunc(){
-            console.log("totalMatchdaysVV")
+            console.log("totalmatchdaysVV")
         },
 
-        populateMatchdays(firstMatchday,lastMatchday) {
-            var lowEnd = firstMatchday;
-            var highEnd = lastMatchday;
+        populatematchdays(firstmatchday,lastmatchday) {
+            var lowEnd = firstmatchday;
+            var highEnd = lastmatchday;
             var arr = [];
             while (lowEnd <= highEnd) {
                 arr.push(lowEnd++);
             }
             return arr
         },
-        defineCurrentMatchday (num) {
-            this.currentMatchday = num
-            this.currentMatchdaySelect = num
+        defineCurrentmatchday (num) {
+            this.currentmatchday = num
+            this.currentmatchdaySelect = num
         },
-        selectCurrentMatchday () {
-            this.currentMatchdaySelect = this.currentMatchday
-            this.$parent.filteredMatches(this.currentMatchdaySelect)
+        selectCurrentmatchday () {
+            this.currentmatchdaySelect = this.currentmatchday
+            this.$parent.filteredMatches(this.currentmatchdaySelect)
+            console.log(this.currentmatchdaySelect)
         },
-        selectPreviousMatchday () {
-            if (this.currentMatchdaySelect<=1){}
+        selectPreviousmatchday () {
+            if (this.currentmatchdaySelect<=1){}
             else {
-            this.currentMatchdaySelect--
-            this.$parent.filteredMatches(this.currentMatchdaySelect)}},
+            this.currentmatchdaySelect--
+            this.$parent.filteredMatches(this.currentmatchdaySelect)}},
 
-        selectNextMatchday () {
-            if (this.currentMatchdaySelect>=38){}
+        selectNextmatchday () {
+            if (this.currentmatchdaySelect>=38){}
             else {
-            this.currentMatchdaySelect++
-            this.$parent.filteredMatches(this.currentMatchdaySelect)}
+            this.currentmatchdaySelect++
+            this.$parent.filteredMatches(this.currentmatchdaySelect)}
         },
-        changeMatchdayDropdown () {
-            this.$parent.filteredMatches(this.currentMatchdaySelect)
+        changematchdayDropdown () {
+            this.$parent.filteredMatches(this.currentmatchdaySelect)
 
         }
     }}
@@ -88,39 +105,78 @@ export default {
 </script>
 
 <style scoped>
-.matchSelectText {
-    bottom: 16px;
-    left: 20px;
-    position: absolute;
-    font-size:0.8em
+
+.matchWeekTitle{
+     margin: 0
+}
+
+.matchdayInfoContainer{
+    display: flex;
+    justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+    width: 100vw;
+      position: fixed;
+  top: 7px;
+  left: 0px;
+}
+
+.matchdayInfoContainerLower{
+    display: flex;
+    justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+    width: 100vw;
+      position: fixed;
+  bottom: 7px;
+  left: 0px;
+}
+
+.matchdayInfo{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 20px;
+    color: white;
 }
 
 .matchSelect {
-    width:70px
-}
-
-.buttonContainer {
-height: 65px;
-position: absolute;
-top: 10%;
-right: 5%;
-display: flex;
-align-content: center;
-align-items: center;
+width: 20;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -90px;
+  margin-left: -100px;
 
 }
 
-.MatchdaySelector {
+.matchdaySelector {
+  position: fixed;
+  bottom: 56px;
+  width: 100vw;
 padding: 14px;
 display: flex;
-top: -13px;
-left: 0px;
-position: fixed;
-height: 7px;
-width: 100vw;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
 z-index: 1;
 border-width: 1px;
 border-style: dotted;
+}
+
+
+.buttonGroup{
+margin: 10px 10px 0px 10px;
+    display: inline-block;
+}
+
+.browseButtons{
+    position: relative;
+    top: 7px
 }
 </style>
 

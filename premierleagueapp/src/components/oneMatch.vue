@@ -1,5 +1,5 @@
 <template>
-<div class="matchInfo">
+<!-- <div class="matchInfo">
     <div class="homeTeam" :style="homeLogoUpdate">
         <v-layout row justify-center>
             <div class="modalClicker" @click="Modal = true">
@@ -8,7 +8,7 @@
                 <v-card>
                     <v-card-title class="display-1">{{this.HomeTeamName}}</v-card-title>
                     <v-card-title class="title">
-                        Matchday {{match.matchday}} Results: 
+                        matchday {{match.matchday}} Results: 
                     </v-card-title>
                     <v-card-text>Goals at fulltime: {{match.score.fullTime.homeTeam}}<br>
                     Goals at halftime: {{match.score.halfTime.homeTeam}}<br>
@@ -25,10 +25,11 @@
         </v-layout>
     </div>
     <div class="score">
-        <div class="scoreNum">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</div>
-        <div class="scoreDate">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
+        <div class="scoreNum"><p>{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</p></div>
+        <div class="scoreDate"><div>{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
             )+"-"+match.utcDate.substring(0, 4)}}</div>
-        <div class="scoreDate">{{match.utcDate.substring(11, 16)+" GMT"}}</div>
+        <div>{{match.utcDate.substring(11, 16)+" GMT"}}</div>
+        </div>
     </div>
     <div class="awayTeam" :style="awayLogoUpdate">
 
@@ -39,12 +40,12 @@
                 <v-card>
                     <v-card-title class="display-1">{{this.AwayTeamName}}</v-card-title>
                     <v-card-title class="title">
-                        Matchday {{match.matchday}} Results: 
+                        matchday {{match.matchday}} Results: 
                     </v-card-title>
                     <v-card-text>Goals at fulltime: {{match.score.fullTime.awayTeam}}<br>
                     Goals at halftime: {{match.score.halfTime.awayTeam}}<br>
                     Penalties: {{match.score.penalties.awayTeam}}</v-card-text>
-                    <div class="teamModal" :style="awayLogoUpdate" />
+                    <div class="homeTeamModal" :style="awayLogoUpdate" />
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="green darken-1" flat="flat" @click="ModalAway = false">
@@ -58,8 +59,185 @@
 
 
     </div>
+</div> -->
+
+
+<div class="matchInfoContainer">
+    <div class="homeTeamArea" @click="Modal = true">
+        <div class="teamLogoArea" :style="homeLogoUpdate"></div>
+    </div>
+    <div class="scoreArea">
+
+            <p class="score">{{match.score.fullTime.homeTeam}} - {{match.score.fullTime.awayTeam}}</p>
+            <p class="dateInfo">{{match.utcDate.substring(8, 10)+"-"+match.utcDate.substring(5,7
+            )+"-"+match.utcDate.substring(0, 4)}} <br> {{match.utcDate.substring(11, 16)+" GMT"}} </p>
+
+    </div>
+    <div class="awayTeamArea" @click="Modal = true">
+        <div class="teamLogoArea" :style="awayLogoUpdate"></div>
+    </div>
 </div>
+
+
 </template>
+
+<style>
+.score{
+    display: inline;
+    margin: 0;
+    color: rgb(255, 198, 55);
+    font-size: 1.7em;
+}
+
+.dateInfo{
+    display: inline;
+    margin: 0;
+    color: rgb(255, 255, 255);
+       font-size: 0.8em;
+}
+
+.matchInfoContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: stretch;
+    height: 85px;
+    width: 100%;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.397);
+    border-radius: 20px;
+    border-color: antiquewhite;
+    border-style: solid;
+    border-width: 1px
+}
+.teamLogoArea{
+    width: 100%;
+    height: 100%;
+    background-position:center;
+    background-size: auto 95%;
+}
+
+
+.homeTeamArea{
+    width:33%;
+    height: 100%;
+    padding: 5px;
+}
+.scoreArea{
+			display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+    width:33%;
+    height: 100%;
+    background-position:center;
+    background-size: auto 95%;
+}
+
+.scoreNum {
+    color: rgb(255, 198, 55);
+    font-size: 1.7em;
+}
+.scoreDate {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.397);
+    color: white;
+    font-size: 0.70em;
+    padding: 5px;
+}
+
+.awayTeamArea{
+    width:33%;
+    height: 100%;
+    padding: 5px;
+}
+
+
+
+/* OLD */
+.modalClicker{
+position: relative;
+bottom:10px;
+height: 80px;
+width: 90px;
+background-color: rgba(0, 0, 0, 0)
+}
+
+.homeLogo{
+    position: relative;
+    bottom: 3px;
+    left: 90%;
+    height: 75px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.418);
+    background-size: auto 95%;
+}
+
+.matchInfo {
+    padding: 5px;
+    width: 100vw;
+    margin: 0px;
+    height: 85px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.homeTeam {
+    padding: 10px;
+    width: 37%;
+    margin: 0px;
+    height: 80px;
+    height: 80px;
+    background-color:rgba(0, 0, 0, 0.5);
+    background-position:center;
+    background-size: auto 95%;
+    border-radius: 20px 0px 0px 20px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.homeTeamModal {
+    margin: 0px;
+    height: 150px;
+    background-position:center;
+    background-size: auto 95%;
+}
+
+.awayTeam {
+    padding: 10px;
+    width: 37%;
+    margin: 0px;
+    height: 80px;
+    height: 80px;
+    background-color:rgba(0, 0, 0, 0.5);
+    background-position: center;
+    background-size: auto 95%;
+    border-radius: 0px 20px 20px 0px;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    
+}
+@media only screen and (max-width: 350px) {
+.scoreNum {
+    font-size: 1.5em
+}
+.scoreDate {
+    font-size: 0.5em
+}}
+
+</style>
+
+
 <script>
 export default {
     props: ['match',
@@ -134,105 +312,4 @@ export default {
     }
 }
 </script>
-
-<style>
-.modalClicker{
-    position: relative;
-bottom:10px;
-height: 80px;
-width: 90px;
-background-color: rgba(0, 0, 0, 0.513)
-}
-
-.homeLogo{
-    position: relative;
-    bottom: 3px;
-    left: 90%;
-    height: 75px;
-    width: 30px;
-    background-color: rgba(0, 0, 0, 0.418);
-    background-size: auto 95%;
-}
-
-.matchInfo {
-    padding: 5px;
-    width: 100vw;
-    margin: 0px;
-    height: 85px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    text-align: center;
-}
-
-.homeTeam {
-    padding: 10px;
-    width: 37%;
-    margin: 0px;
-    height: 80px;
-    background-color:rgba(54, 54, 54, 0.5);
-    background-position:center;
-    background-size: auto 95%;
-    border-radius: 20px 0px 0px 20px;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
-
-.homeTeamModal {
-    margin: 0px;
-    height: 150px;
-    background-position:center;
-    background-size: auto 95%;
-}
-
-.awayTeam {
-    padding: 10px;
-    width: 37%;
-    margin: 0px;
-    height: 80px;
-    background-color:rgba(54, 54, 54, 0.5);
-    background-position: center;
-    background-size: auto 95%;
-    border-radius: 0px 20px 20px 0px;
-    border-right: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    
-}
-
-.score {
-    color: white;
-    padding: 20px;
-    width: 29%;
-    height: 80px;
-    background-color:rgba(54, 54, 54, 0.5);
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
-
-.scoreNum {
-    position: relative;
-    bottom:20px;
-    color: rgb(255, 198, 55);
-    font-size: 1.7em;
-}
-.scoreDate {
-    position: relative;
-    bottom:20px;
-    background-color: rgba(0, 0, 0, 0.397);
-    color: white;
-    font-size: 0.8em
-}
-
-@media only screen and (max-width: 350px) {
-.scoreNum {
-    font-size: 1.5em
-}
-.scoreDate {
-    font-size: 0.6em
-}}
-
-</style>
-
 
